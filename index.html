@@ -7,18 +7,73 @@
   <title>Vladimir Podolian</title>
   <meta name="description" content="Vladmir Podolian homepage">
   <meta name="author" content="vpodolyan">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" 
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  
   <style>
     body {
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
+
     .title {
       color: #3E3E3E;
       font-size: 1.8em;
+    }
+
+    #map {
+      height: 88vh;
     }
   </style>
 </head>
 
 <body>
   <h2 class="title">Hi there!<br />I have helped startups & enterprises to build great web and mobile apps over the last decade 🚀</h2>
+  <div id="map"></div>
 </body>
 </html>
+
+<script>
+  const map = window.innerWidth >= 1024 ? L.map('map').setView([44,-40], 3) : L.map('map').setView([-18,-40.4211907], 1);
+
+  const mapUrl = 'https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidnBvZG9seWFuIiwiYSI6ImNrYmRpOWQ0cjBjMjAydnFldWp1bHY0YXoifQ.N9z1h6beRKh72Mpeo50oNQ';
+  
+  L.tileLayer(mapUrl, {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  const grayIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+  L.marker([56.85555,35.8459], { icon: grayIcon })
+      .addTo(map)
+      .bindPopup('<b>Home Computer Network (Sky@Net brand)</b> - Local internet service provider');
+  
+  L.marker([56.86268,35.8886205], { icon: grayIcon })
+      .addTo(map)
+      .bindPopup('<b>Accenture Russia</b> - Global consulting & outsorcing corporation');
+
+  L.marker([59.965344,30.3127493], { icon: grayIcon })
+      .addTo(map)
+      .bindPopup('<b>Finangel</b> - Fintech startup aims to revolutionize installment process');
+
+
+  L.marker([47.60554,-122.3337241,17], { icon: grayIcon })
+      .addTo(map)
+      .bindPopup('<b>Interpals</b> - Language exchange social network');
+
+  L.marker([25.7903477,-80.1316221])
+      .addTo(map)
+      .bindPopup('<b>Blackbird Ventures</b> - incubates and invests in early-stage technology companies');
+</script>
