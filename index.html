@@ -21,19 +21,56 @@
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 
+    .head_container {
+      display: flex;
+    }
+
     .title {
       color: #3E3E3E;
       font-size: 1.8em;
     }
 
+    .badge {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .badge__linkedin {
+      width: 50px;
+    }
+
+    .social_icons {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end
+    }
+
     #map {
       height: 88vh;
+    }
+
+    @media screen and (max-width: 1439px) {
+        .head_container {
+          flex-direction: column;
+        }
+
+        .social_icons {
+          justify-content: flex-start;
+          margin-bottom: 0.83em;
+        }
     }
   </style>
 </head>
 
 <body>
-  <h2 class="title">Hi there!<br />I have helped startups & enterprises to build great web and mobile apps over the last decade 🚀</h2>
+  <div class="head_container">
+    <h2 class="title">Hi there!<br />I have helped startups & enterprises to build great web and mobile apps over the last decade 🚀</h2>
+    <div class="social_icons">
+      <a class="badge" href="https://github.com/vpodolyan" target="_blank" ><img src='/assets/github.svg' /></a>
+      <a class="badge" href="https://linkedin.com/in/vladimir-podolyan/" target="_blank" ><img class="badge__linkedin" src='/assets/linkedin.svg' /></a>
+    </div>
+  </div>
   <div id="map"></div>
 </body>
 </html>
@@ -66,7 +103,7 @@
 
   L.marker([59.965344,30.3127493], { icon: grayIcon })
       .addTo(map)
-      .bindPopup('<b>Finangel</b> - Fintech startup aims to revolutionize installment process');
+      .bindPopup('<b>Finangel</b> - Fintech startup aimed to revolutionize installment process');
 
 
   L.marker([47.60554,-122.3337241,17], { icon: grayIcon })
@@ -75,5 +112,5 @@
 
   L.marker([25.7903477,-80.1316221])
       .addTo(map)
-      .bindPopup('<b>Blackbird Ventures</b> - incubates and invests in early-stage technology companies');
+      .bindPopup('<b>Blackbird Ventures</b> - Venture company that incubates and invests in early-stage technology startups');
 </script>
